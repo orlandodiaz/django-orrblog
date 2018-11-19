@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% load myfilters %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <h1 style="display:inline">{{ page.title }} </h1>
+    <a class="text-muted header-links" onclick="updatePageForm()"> Edit</a>
+    <div class="blog-content">
+        {#        <form method="POST" action="">{% csrf_token %}#}
+        {#            {{ form }}#}
+        {#        </form>#}
+        {{ page.to_markdown | safe }}
+    </div>
+
+    <div id="update_page_form" style="display: none;">
+        <div class="form-group form-blog-content">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.title |addclass:'form-control hidden' }}
+{#                {{ form.body|nospellcheck|addclass:'form-control' }}#}
+                {{ form.body | attr:"spellcheck:False" | attr:"class:form-control" }}
+
+                <input type="submit" class="btn btn-primary" value="Save">
+
+            </form>
+        </div>
+        {{ form.media }}
+
+
+    </div>
+
+{% endblock %}

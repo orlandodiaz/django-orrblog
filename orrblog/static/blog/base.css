@@ -1,0 +1,9 @@
+body {
+    font-family: Georgia, Roboto, serif;
+    font-size:120%
+}
+
+.navbar {
+    margin:0 auto;
+    width:400px;
+}

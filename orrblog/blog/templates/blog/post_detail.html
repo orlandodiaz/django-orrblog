@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>{{ post.title }} </h1>
+    <p class="text-small text-muted">{{ post.date_posted | date:"m/d/Y" }}</p>
+
+    {{ post.to_markdown | safe }}
+
+    <p class="text-muted> "This is a post" </p>
+{% endblock %}
