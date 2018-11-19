@@ -4,11 +4,11 @@
     {% for post in posts %}
 
         <a href="{% url "post-detail" post.slug %}">
-            <h1>{{ post.title }}</h1>
+            <h3>{{ post.title }}</h3>
         </a>
         <p class="text-small text-muted">{{ post.date_posted | date:"m/d/Y" }}</p>
 
-        <p>{{ post.to_markdown | safe }}</p>
+{#        <p>{{ post.to_markdown | safe }}</p>#}
 
     {% endfor %}
 

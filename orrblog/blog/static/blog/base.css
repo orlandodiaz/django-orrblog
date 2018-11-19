@@ -68,6 +68,7 @@ a:hover {
 
 textarea {
     min-height:500px;
+    font-family: Fira Code, monospace;
 }
 
 /*input, textarea {*/
