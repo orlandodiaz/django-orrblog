@@ -1,0 +1,36 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Update form</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<form method="post">{% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <input type="submit" value="Update">#}
+{#</form>#}
+{##}
+{#</body>#}
+{#</html>#}
+{% load myfilters %}
+{% load widget_tweaks %}
+
+
+<div id="update_post_form" style="display: none;">
+    <div class="form-group form-blog-content">
+        <form method="POST" action="{% url 'post-update' post.pk %}">
+            {% csrf_token %}
+            {{ form.title |attr:"class:form-control form-title" | attr:"autocomplete:off" | attr:"spellcheck:False" }}
+            {#                {{ form.body|nospellcheck|addclass:'form-control' }}#}
+            {{ form.body2 | attr:"spellcheck:False" | attr:"class:form-control" }}
+
+            <input type="submit" class="btn btn-primary" value="Save">
+
+            <a class="btn btn-danger" href="{% url 'post-delete' post.pk %}" role="button">Delete</a>
+
+
+        </form>
+    </div>
+    {{ form.media }}
+</div>
