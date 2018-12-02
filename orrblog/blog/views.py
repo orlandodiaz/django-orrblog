@@ -42,12 +42,10 @@ class PostDetailView(FormMixin, DetailView):
 
         context = super().get_context_data(**kwargs)
 
-
-        self.update_form = UpdatePostForm(initial=
-                                         {'body2': self.object.body2,
-                                          'title': self.object.title
-                                          }
-                                         )
+        self.update_form = UpdatePostForm(initial={
+            'body2': self.object.body2,
+            'title': self.object.title
+        })
         context['form'] = self.update_form
         # context['form'] = UpdatePageForm(initial={'title': self.object.title, 'body': self.object.body2})
 
@@ -69,12 +67,10 @@ class PageDetailView(FormMixin, DetailView):
 
         context = super().get_context_data(**kwargs)
 
-
-        self.update_form = UpdatePageForm(initial=
-                                         {'body2': self.object.body2,
-                                          'title': self.object.title
-                                          }
-                                         )
+        self.update_form = UpdatePageForm(initial={
+            'body2': self.object.body2,
+            'title': self.object.title
+        })
         context['form'] = self.update_form
         # context['form'] = UpdatePageForm(initial={'title': self.object.title, 'body': self.object.body2})
 
@@ -85,6 +81,7 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
     model = Page
     fields = ['title', 'body2']
     template_name_suffix = '_detail'
+
     # template_name = 'page_detail'
 
     def form_valid(self, form):
@@ -122,8 +119,6 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
             print(field, field.errors)
         return super().form_valid(form)
 
-
-
     # # Make the author the current logged in user
     # def form_valid(self, form):
     #     # form.instance.author = self.request.user
@@ -135,4 +130,3 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     #     # if self.request.user == post.author:
     #     #     return True
     #     return False
-
