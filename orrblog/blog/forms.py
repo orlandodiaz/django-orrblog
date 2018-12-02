@@ -1,4 +1,3 @@
-
 from django.forms import ModelForm
 from django.forms import CharField, Textarea
 from markdownx.fields import MarkdownxFormField
