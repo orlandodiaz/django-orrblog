@@ -1,1 +1,7 @@
 db.sqlite3
+.idea/
+orrblog/blog/__pycache__/
+orrblog/blog/migrations/__pycache__/
+orrblog/blog/templatetags/__pycache__/
+orrblog/media/markdownx/
+orrblog/orrblog/__pycache__/
