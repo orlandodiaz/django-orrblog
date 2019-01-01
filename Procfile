@@ -1,1 +1,1 @@
-web: gunicorn orrblog.orrblog.wsgi —-log-file -
+web: gunicorn orrblog.wsgi —-log-file -
