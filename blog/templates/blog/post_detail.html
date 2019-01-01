@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% load myfilters %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+    <div class="blog-div">
+
+        <h1 style="display:inline">{{ post.title }} </h1>
+
+        {% if user.is_authenticated %}
+            <a class="text-muted header-links" onclick="updatePostForm()"> Edit</a>
+        {% endif %}
+        <p class="text-small text-muted">{{ post.date_posted | date:"m/d/Y" }}</p>
+
+        <div class="blog-content">
+            {#        <form method="POST" action="">{% csrf_token %}#}
+            {#            {{ form }}#}
+            {#        </form>#}
+            {{ post.to_markdown | safe }}
+        </div>
+    </div>
+
+
+    {% if user.is_authenticated %}
+        {% include 'blog/post_update_form.html' %}
+    {% endif %}
+
+{% endblock %}

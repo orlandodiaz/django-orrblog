@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+
+        <a class="post-links" href="{% url "post-detail" post.slug %}">
+            <h3>{{ post.title }}</h3>
+        </a>
+        <p class="text-small text-muted">{{ post.date_posted | date:"m/d/Y" }}</p>
+
+{#        <p>{{ post.to_markdown | safe }}</p>#}
+
+    {% endfor %}
+
+
+    {% if is_paginated %}
+
+{#        {{page_obj }}#}
+
+        <div class="container">
+        <div class="row">
+    <span class="pagination">
+
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}"><-- </a>
+        {% endif %}
+
+        <span class="active"> page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"> --></a>
+        {% endif %}
+
+    </span>
+        </div>
+
+    {% endif %}
+{#    {{ form.media }}#}
+
+{% endblock %}
