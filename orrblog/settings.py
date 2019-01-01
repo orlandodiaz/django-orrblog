@@ -24,7 +24,9 @@ SECRET_KEY = '5!r+f6l6lrtmh7ns)yokxjbcao%$z1n&xzy6gkv&@5rp-sb7zq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '0.0.0.0', 'localhost', '127.0.0.1', 'shielded-earth-89095.herokuapp.com'
+]
 
 # Application definition
 
