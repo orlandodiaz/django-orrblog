@@ -18,7 +18,7 @@ import markdown2
 
 class Page(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=True, max_length=100)
     body = models.TextField()
     body2 = MarkdownxField(default='')
     date_posted = models.DateTimeField(default=timezone.now)
@@ -37,16 +37,14 @@ class Page(models.Model):
 class Post(models.Model):
 
     title = models.CharField(max_length=100)
-    slug = models.SlugField(default='', editable=False)
+    slug = models.SlugField(default='', editable=False, max_length=100)
     body = models.TextField()
     body2 = MarkdownxField(default='')
 
     date_posted = models.DateTimeField(default=timezone.now)
     # slug = models.SlugField()
-    author = models.ForeignKey(User,
-                               on_delete=models.CASCADE,
-                               related_name='blog_posts',
-                               default='')
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='blog_posts', default='')
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
@@ -54,6 +52,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
+
     #
 
     @property
@@ -61,8 +60,5 @@ class Post(models.Model):
         # return markdown2.markdown(self.body2)
         return markdownify(self.body2)
 
-
-
     def __str__(self):
         return self.title
-
