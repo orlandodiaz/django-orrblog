@@ -129,7 +129,7 @@ STATIC_URL = '/static/'
 # # Extra places for collectstatic to find static files.
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
@@ -157,3 +157,5 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 DEFAULT_FILE_STORAGE = 'orrblog.storage_backends.MediaStorage'  # <-- here is where we reference it
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+
+MEDIA_ROOT = MEDIA_URL
