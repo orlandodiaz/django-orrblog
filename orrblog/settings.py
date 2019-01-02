@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
     'markdown.extensions.extra',
@@ -156,3 +156,4 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 
 DEFAULT_FILE_STORAGE = 'orrblog.storage_backends.MediaStorage'  # <-- here is where we reference it
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
