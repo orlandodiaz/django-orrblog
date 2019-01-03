@@ -17,6 +17,7 @@ import markdown2
 
 
 class Page(models.Model):
+    """ Model for pages (not posts) """
     title = models.CharField(max_length=100)
     slug = models.SlugField(null=True, max_length=100)
     body = models.TextField()
@@ -35,6 +36,7 @@ class Page(models.Model):
 
 
 class Post(models.Model):
+    """ Model for blog posts"""
 
     title = models.CharField(max_length=100)
     slug = models.SlugField(default='', editable=False, max_length=100)
@@ -52,8 +54,6 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
-
-    #
 
     @property
     def to_markdown(self):
