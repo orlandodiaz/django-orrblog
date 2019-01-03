@@ -5,3 +5,7 @@ orrblog/blog/migrations/__pycache__/
 orrblog/blog/templatetags/__pycache__/
 orrblog/media/markdownx/
 orrblog/orrblog/__pycache__/
+
+media/markdownx
+static/blog
+datadump.json
